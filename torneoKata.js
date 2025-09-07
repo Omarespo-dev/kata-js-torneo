@@ -55,17 +55,17 @@ const arrObjCompleto = casualWeapon(fighters)
 
 //allenamento incremento power
 const allenamento = arrObjCompleto.map(fighter => {
-    
+
     //potenza casuale incremento
     const incrementoPotenza = Math.floor(Math.random() * 100) + 1;
 
     //Copia di fighter e modifico power
-    return {...fighter , power: fighter.power * incrementoPotenza}
+    return { ...fighter, power: fighter.power * incrementoPotenza }
 
 })
 
 //Debug
-console.log(allenamento);
+// console.log(allenamento);
 
 
 
@@ -78,4 +78,52 @@ const qualificazione = allenamento.filter(fightPower => {
     return fightPower.power >= 2000
 })
 
-console.log(qualificazione)
+//Log aggiornato di qualificazione 
+// console.log(qualificazione)
+
+
+
+
+
+
+
+
+// ### Fase 4 - ⚔️ Combattimento
+// I combattimenti si svolgeranno tra un partecipante e il successivo dell'elenco.  //RIFORMULO I COMBATTIMENTI SI SVOLGONO TRA UN PARTECIPANTE QUINDI IL PRIMO E  IL SUCCESSIVO DELL ARR DI OBJ
+
+
+// Regole principali:
+// - Ogni combattente combatte una sola volta.
+// - Vince chi ha la potenza più alta.
+// - In caso di parità, vince chi "gioca in casa" (ossia chi viene prima nell'elenco).
+// - ⚠️ Se il numero di combattenti è dispari, aggiungi un combattente "Robot" con potenza **4000** per garantire gli scontri.
+
+//Salvo copia qualificazione
+const combattenti = [...qualificazione]
+
+
+for (let i = 0; i < combattenti.length; i++) {
+    const element = combattenti[i];
+    // console.log(element);
+
+    //Condizione Combattimento 
+    if (i % 2 === 0) {
+        //Primo combattente 
+        const firstCombattente = element
+
+        //Secondo combattente con verifica se e undefined aggiungi ROBOT
+        const secondCombattente = !combattenti[i + 1] ? { name: "Robot", power: 4000 } : combattenti[i + 1];
+
+        //condizione potenza alta e parita 
+        if (firstCombattente.power > secondCombattente.power) {
+            console.log("Il vincitore con la potenza piu alta e:", firstCombattente)
+        } else if (firstCombattente.power === secondCombattente.power) {
+            console.log("CASO PARITA VINCE IL PRIMO", firstCombattente)
+        } else {
+            console.log("Il vincitore con la potenza piu alta e:", secondCombattente)
+        }
+
+        //Debug
+        // console.log(firstCombattente,secondCombattente)
+    }
+}
