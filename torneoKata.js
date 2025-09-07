@@ -101,6 +101,7 @@ const qualificazione = allenamento.filter(fightPower => {
 //Salvo copia qualificazione
 const combattenti = [...qualificazione]
 
+const arrVincitori = []
 
 for (let i = 0; i < combattenti.length; i++) {
     const element = combattenti[i];
@@ -117,13 +118,52 @@ for (let i = 0; i < combattenti.length; i++) {
         //condizione potenza alta e parita 
         if (firstCombattente.power > secondCombattente.power) {
             console.log("Il vincitore con la potenza piu alta e:", firstCombattente)
+            arrVincitori.push(firstCombattente)
         } else if (firstCombattente.power === secondCombattente.power) {
             console.log("CASO PARITA VINCE IL PRIMO", firstCombattente)
+            arrVincitori.push(firstCombattente)
         } else {
             console.log("Il vincitore con la potenza piu alta e:", secondCombattente)
+            arrVincitori.push(secondCombattente)
         }
 
         //Debug
         // console.log(firstCombattente,secondCombattente)
+
     }
+
 }
+
+
+//### Fase 5 - 🏆 Premiazione
+// Tra tutti i vincitori degli scontri, saliranno sul podio i **3 combattenti con la potenza più alta**, in ordine decrescente.
+
+//LOG DEGLI ARR VINCINTORI 
+console.log(arrVincitori);
+
+//Ordino prima da decrescente e poi prendo i primi tre elementi che hanno la potenza maggiore 
+const vincitori = arrVincitori.sort((a, b) => b.power - a.power).slice(0, 3)
+
+//Log dei Vincitori
+console.log(vincitori);
+
+
+
+// // // // // //  NON FUNZIONA MIO METODO // // // // // // // // // // // 
+// //variabili iniziali
+// let confronto = { firstCombattente: 0, secondCombattente: 0, thirdCombattente: 0, }
+
+// arrVincitori.forEach(vi => {
+//     if (vi.power > confronto.firstCombattente) {
+//         confronto.thirdCombattente = confronto.secondCombattente;
+//         confronto.secondCombattente = confronto.firstCombattente;
+//         confronto.firstCombattente = vi.power;
+//     } else if (vi.power > confronto.secondCombattente) {
+//         confronto.thirdCombattente = confronto.secondCombattente;
+//         confronto.secondCombattente = vi.power;
+//     } else if (vi.power > confronto.thirdCombattente) {
+//         confronto.thirdCombattente = vi.power;
+//     }
+// });
+
+// console.log(confronto);
