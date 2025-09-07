@@ -2,14 +2,18 @@
 import { fighters } from "./dataFighters.js"
 import { weapons } from "./dataWeapons.js"
 
-
+////////////////////////////////////////////////
 //log di debug
 // console.log(fighters)
 // console.log(weapons)
+////////////////////////////////////////////////
+
+
 
 
 //### Fase 1 - 🔥 Scelta dell'Arma
 // Ogni combattente sceglierà casualmente un'arma dalla lista disponibile. 
+// ⚠️ Una volta scelta, un'arma non sarà più disponibile per i successivi combattenti.
 function casualWeapon(arrFighters) {
 
     //copia di weapons
@@ -36,7 +40,7 @@ function casualWeapon(arrFighters) {
 }
 
 console.log(casualWeapon(fighters))
-// ⚠️ Una volta scelta, un'arma non sarà più disponibile per i successivi combattenti.
+
 
 
 
@@ -44,10 +48,12 @@ console.log(casualWeapon(fighters))
 
 //### Fase 2 - 💪 Allenamento
 // Ogni combattente si sottoporrà a un allenamento che incrementerà (o forse no) la sua potenza.
+// La potenza verrà moltiplicata per un numero casuale tra **1 e 100**.
 
+//Arr di obj modificato 
 const arrObjCompleto = casualWeapon(fighters)
-// console.log(arrObjCompleto);
 
+//allenamento incremento power
 const allenamento = arrObjCompleto.map(fighter => {
     
     //potenza casuale incremento
@@ -58,6 +64,5 @@ const allenamento = arrObjCompleto.map(fighter => {
 
 })
 
+//Debug
 console.log(allenamento);
-
-// La potenza verrà moltiplicata per un numero casuale tra **1 e 100**.
