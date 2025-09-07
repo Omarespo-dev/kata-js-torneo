@@ -39,7 +39,7 @@ function casualWeapon(arrFighters) {
 
 }
 
-console.log(casualWeapon(fighters))
+// console.log(casualWeapon(fighters))
 
 
 
@@ -66,3 +66,16 @@ const allenamento = arrObjCompleto.map(fighter => {
 
 //Debug
 console.log(allenamento);
+
+
+
+
+//### Fase 3 - 🎯 Qualificazione
+// Escludiamo dal torneo chi, dopo l'allenamento, non ha raggiunto una potenza di almeno **2000**.
+
+//Uso filter per dire che se non hanno raggiunto almeno 2000 di power saranno scartati dal nuovo arr
+const qualificazione = allenamento.filter(fightPower => {
+    return fightPower.power >= 2000
+})
+
+console.log(qualificazione)
